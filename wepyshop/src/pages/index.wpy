@@ -1,0 +1,23 @@
+<style lang="less">
+</style>
+<template>
+<!--这里下写结构-->
+  <view class="container">
+    Hello world
+  </view>
+</template>
+
+<script>
+// 这里写逻辑
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    // 这里写json配置
+    config = {
+      navigationBarTitleText: '优购'
+    }
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>
