@@ -30,6 +30,8 @@
 ---解释:
      (1)export default class Index extends wepy.page:创建Index类,并继承wepy.page页面,然后导出到本页面中
      (2)import wepy from 'wepy':把wepy导入到页面中
-     (3)
+
+---在wepy中用wepy代替wx写法
+===配置域名:详情=>不校验合法域名除勾上
 
 

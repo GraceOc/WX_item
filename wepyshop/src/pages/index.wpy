@@ -138,24 +138,26 @@ export default class Index extends wepy.page {
     navigationBarTitleText: '优购'
   }
   data = {
-    swiperArr: [
-      {
-        navigator_url: '',
-        image_src: '/upload/banner1.png'
-      },
-      {
-        navigator_url: '',
-        image_src: '/upload/banner2.png'
-      },
-      {
-        navigator_url: '',
-        image_src: '/upload/banner3.png'
-      }
-    ]
+    // 轮播图数组
+    swiperArr: []
 
   }
   onLoad() {
     console.log('onLoad')
+    // 请求数据 wepy.request() 在wepy中使用wepy代替wx写法,小程序没有window对象
+    wepy.request({
+      url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
+      data: 'data',
+      method: 'GET',
+      dataType: 'json',
+      success: res => { // 如果设为json会尝试对返回数据做一次JSON.pare
+        console.log(res.data.data)
+        this.swiperArr = res.data.data
+        // 原生小程序默认单向数据绑定,而wepy封装了this.$apply()方法双向数据绑定,但需要手动触发才能视图更新
+        this.$apply()
+      },
+      fail: () => {}
+    })
   }
 }
 </script>
