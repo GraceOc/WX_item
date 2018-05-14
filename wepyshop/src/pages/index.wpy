@@ -74,10 +74,10 @@
       <input type="text" placeholder="搜索"/>
     </view>
     <!-- 轮播图 -->
-    <swiper class="swiper" indicator-dots autoplay circular indicator-active-colo=#fff indicator-color=rgba(255,255,255,.3)>
+    <swiper class="swiper" indicator-dots autoplay circular indicator-active-colo="#fff" indicator-color="rgba(255,255,255,.3)">
       <block wx:for="{{swiperArr}}" wx:key="index">
         <swiper-item>
-          <navigator url="">
+          <navigator url="{{item.navigator_url}}" open-type="{{ item.open_type }}">
             <image class="swiper-img" src="{{item.image_src}}" mode="widthFix"/>
           </navigator>
         </swiper-item>
@@ -86,18 +86,11 @@
 
   <!-- 导航 -->
   <view class="nav">
-    <navigator class="nav-item" hover-class="none">
-      <image class="nav-img" src="/upload/icon_index_nav_1@2x.png"></image>
-    </navigator>
-    <navigator class="nav-item" hover-class="none">
-      <image class="nav-img" src="/upload/icon_index_nav_2@2x.png"></image>
-    </navigator>
-    <navigator class="nav-item" hover-class="none">
-      <image class="nav-img" src="/upload/icon_index_nav_5@2x.png"></image>
-    </navigator>
-    <navigator class="nav-item" hover-class="none">
-      <image class="nav-img" src="/upload/icon_index_nav_4@2x.png"></image>
-    </navigator>
+    <block wx:for="{{navArr}}" wx:key="index">
+      <navigator class="nav-item" hover-class="none" url="{{item.navigator_url}}"  open-type="{{tiem.open-type}}">
+        <image class="nav-img" src="{{item.image_src}}"></image>
+      </navigator>
+    </block>
   </view>
   <!-- 首页楼层 -->
   <view class="floor">
@@ -135,12 +128,13 @@ import wepy from 'wepy'
 export default class Index extends wepy.page {
   // 这里写json配置 语法: 属性名 = { } 配置之间无逗号
   config = {
-    navigationBarTitleText: '优购'
+    navigationBarTitleText: '优购',
+    enablePullDownRefresh: true
   }
   data = {
     // 轮播图数组
-    swiperArr: []
-
+    swiperArr: [],
+    navArr: []
   }
   onLoad() {
     console.log('onLoad')
@@ -150,10 +144,20 @@ export default class Index extends wepy.page {
       data: 'data',
       method: 'GET',
       dataType: 'json',
-      success: res => { // 如果设为json会尝试对返回数据做一次JSON.pare
+      success: res => {
+        // 如果设为json会尝试对返回数据做一次JSON.pare
         console.log(res.data.data)
         this.swiperArr = res.data.data
         // 原生小程序默认单向数据绑定,而wepy封装了this.$apply()方法双向数据绑定,但需要手动触发才能视图更新
+        this.$apply()
+      },
+      fail: () => {}
+    })
+    // 首页导航
+    wepy.request({
+      url: 'https://itjustfun.cn/api/public/v1/home/catitems',
+      success: res => {
+        this.navArr = res.data.data
         this.$apply()
       },
       fail: () => {}
