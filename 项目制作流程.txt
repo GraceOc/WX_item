@@ -1,23 +1,33 @@
 
 使用微信小程序组件化开发框架Wepy
-=====day01 配置====
+=====day01配置====
    (A)安装wepy:
       (1).使用wepy小程序开发文档:https://tencent.github.io/wepy/document.html#/
       (2).全局安装 npm install wepy-cli -g  查看版本 wepy -v
       (3). npm config get prefix 能查看npm的目录
-    拉取目录 wepy init empty wepyshop
+      (4). 生成目录(1.7.0+的版本用) wepy init empty wepyshop  此时生成一个wepyshop文件夹,用于开发
+      (5). 在生成的目录下安装依赖 npm i
    (B)在vscode中配置:
    	(1)配置当前页:打开安装vetur,配置:右下角=>选择语言模式处改为vue
    	(2)配置全局: 文件-首选项-设置-用户设置-添加代码-"*.wpy": "vue"
    	(3)在project.config.json文件中修改自己的APPID
+	(4) 以上23步可以直接在该目录下放入.vscode包(里面配置好,推荐,因为配置全面)
 
-   (C)在wephop目录下安装依赖 npm i
-        
-  所用到的命令:
-	wepy init empty wepyshop    1. 初始化wepy项目
-	cd wepyshop                 2. 进入项目文件夹
-	npm i                       3. 安装 npm 依赖包
-	wepy build --watch          4. 编译 wepy 项目
+   (C) 开启实时编译,在使用中不能关闭,指令: wepy build --watch
+
+   (D)项目跑起来
+	(1) 前往微信开发者工具,创建小程序项目管理即可
+	 ..APPID问题:如果在A4步骤生成项目中已填入id,在创建小程序项目时会自动找到该id填充,否则手动填充并需要在project.config.json文件中填入
+
+		
+   ....总结:所用到的命令:
+	 wepy init empty wepyshop    1. 初始化wepy项目
+	 cd wepyshop                 2. 进入项目文件夹
+	 npm i                       3. 安装 npm 依赖包
+	 wepy build --watch          4. 编译 wepy 项目
+
+
+
 
 ---配置文件介绍  
      (1)prettierrc文件和.editorconfig是配置代码规范用的,计算机会优先使用该规范,需要安装插件EditorConfig和Prettier才能使用
