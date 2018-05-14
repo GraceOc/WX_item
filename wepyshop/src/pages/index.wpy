@@ -1,23 +1,161 @@
 <style lang="less">
+.search {
+  width: 100%;
+  height: 100rpx;
+  background-color: #ff2d4a;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+  input {
+    height: 60rpx;
+    text-align: center;
+    font-size: 24rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    margin: 0 16rpx;
+  }
+}
+/*轮播图  */
+.swiper {
+  width: 750rpx;
+  height: 340rpx;
+  &-img {
+    width: 750rpx;
+    height: 340rpx;
+  }
+}
+/* 导航  */
+.nav {
+  background-color: #fff;
+  display: flex;
+  &-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 24rpx 0 30rpx;
+  }
+  &-img {
+    width: 128rpx;
+    height: 140rpx;
+  }
+}
+/*楼层*/
+.floor {
+  margin-top: 30rpx;
+  &-head {
+    &-img {
+      width: 750rpx;
+      height: 59rpx;
+    }
+  }
+  &-body {
+    background: #fff;
+    display: flex;
+    padding: 20rpx 16rpx 10rpx 16rpx;
+    &-left,
+    &-left-img {
+      width: 232rpx;
+      height: 386rpx;
+    }
+    &-right {
+      display: flex;
+      flex-wrap: wrap;
+      &-img {
+        width: 233rpx;
+        height: 188rpx;
+        margin: 0 0 10rpx 10rpx;
+      }
+    }
+  }
+}
 </style>
 <template>
 <!--这里下写结构-->
-  <view class="container">
-    Hello world
+    <view class="search">
+      <input type="text" placeholder="搜索"/>
+    </view>
+    <!-- 轮播图 -->
+    <swiper class="swiper" indicator-dots autoplay circular indicator-active-colo=#fff indicator-color=rgba(255,255,255,.3)>
+      <block wx:for="{{swiperArr}}" wx:key="index">
+        <swiper-item>
+          <navigator url="">
+            <image class="swiper-img" src="{{item.image_src}}" mode="widthFix"/>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+
+  <!-- 导航 -->
+  <view class="nav">
+    <navigator class="nav-item" hover-class="none">
+      <image class="nav-img" src="/upload/icon_index_nav_1@2x.png"></image>
+    </navigator>
+    <navigator class="nav-item" hover-class="none">
+      <image class="nav-img" src="/upload/icon_index_nav_2@2x.png"></image>
+    </navigator>
+    <navigator class="nav-item" hover-class="none">
+      <image class="nav-img" src="/upload/icon_index_nav_5@2x.png"></image>
+    </navigator>
+    <navigator class="nav-item" hover-class="none">
+      <image class="nav-img" src="/upload/icon_index_nav_4@2x.png"></image>
+    </navigator>
+  </view>
+  <!-- 首页楼层 -->
+  <view class="floor">
+    <view class="floor-head">
+      <image class="floor-head-img" src="/upload/pic_floor01_title@2x.png"></image>
+    </view>
+    <view class="floor-body">
+      <view class="floor-body-left">
+        <navigator url="">
+          <image class="floor-body-left-img" src="/upload/pic_floor01_1@2x.png"></image>
+        </navigator>
+      </view>
+      <view class="floor-body-right">
+        <navigator url="">
+          <image class="floor-body-right-img" src="/upload/pic_floor01_2@2x.png"></image>
+        </navigator>
+        <navigator url="">
+          <image class="floor-body-right-img" src="/upload/pic_floor01_3@2x.png"></image>
+        </navigator>
+        <navigator url="">
+          <image class="floor-body-right-img" src="/upload/pic_floor01_4@2x.png"></image>
+        </navigator>
+        <navigator url="">
+          <image class="floor-body-right-img" src="/upload/pic_floor01_5@2x.png"></image>
+        </navigator>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 // 这里写逻辑
-  import wepy from 'wepy'
+import wepy from 'wepy'
 
-  export default class Index extends wepy.page {
-    // 这里写json配置
-    config = {
-      navigationBarTitleText: '优购'
-    }
-    onLoad() {
-      console.log('onLoad')
-    }
+export default class Index extends wepy.page {
+  // 这里写json配置 语法: 属性名 = { } 配置之间无逗号
+  config = {
+    navigationBarTitleText: '优购'
   }
+  data = {
+    swiperArr: [
+      {
+        navigator_url: '',
+        image_src: '/upload/banner1.png'
+      },
+      {
+        navigator_url: '',
+        image_src: '/upload/banner2.png'
+      },
+      {
+        navigator_url: '',
+        image_src: '/upload/banner3.png'
+      }
+    ]
+
+  }
+  onLoad() {
+    console.log('onLoad')
+  }
+}
 </script>

@@ -20,10 +20,16 @@
 	wepy build --watch          4. 编译 wepy 项目
 
 ---配置文件介绍  
-      prettierrc文件和.editorconfig是配置代码规范用的,计算机会优先使用该规范,需要安装插件EditorConfig和Prettier才能使用
-     prettierrc文件的配置 "singleQuote": true,
+     (1)prettierrc文件和.editorconfig是配置代码规范用的,计算机会优先使用该规范,需要安装插件EditorConfig和Prettier才能使用
+     	  添加配置:prettierrc文件的配置 "singleQuote": true,
 是否使用单引号   "semi": false
+     (2)添加配置文件.vscode到src同级目录中,.vscode文件的作用:被优先读取该配置,而不读取首选项中的配置,以后团队开发时约定的配置
 
 
+====================day02===============
+---解释:
+     (1)export default class Index extends wepy.page:创建Index类,并继承wepy.page页面,然后导出到本页面中
+     (2)import wepy from 'wepy':把wepy导入到页面中
+     (3)
 
 
