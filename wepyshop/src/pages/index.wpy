@@ -139,30 +139,45 @@ export default class Index extends wepy.page {
   }
   onLoad() {
     console.log('onLoad')
-    // 请求数据 wepy.request() 在wepy中使用wepy代替wx写法,小程序没有window对象
+    // // 请求数据 wepy.request() 在wepy中使用wepy代替wx写法,小程序没有window对象
+    // wepy.request({
+    //   url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
+    //   method: 'GET',
+    //   dataType: 'json',
+    //   success: res => {
+    //     // 如果设为json会尝试对返回数据做一次JSON.pare
+    //     console.log(res.data.data)
+    //     this.swiperArr = res.data.data
+    //     // 原生小程序默认单向数据绑定,而wepy封装了this.$apply()方法双向数据绑定,但需要手动触发才能视图更新
+    //     this.$apply()
+    //   },
+    //   fail: () => {}
+    // })
     wepy.request({
       url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
-      data: 'data',
       method: 'GET',
-      dataType: 'json',
-      success: res => {
-        // 如果设为json会尝试对返回数据做一次JSON.pare
-        console.log(res.data.data)
-        this.swiperArr = res.data.data
-        // 原生小程序默认单向数据绑定,而wepy封装了this.$apply()方法双向数据绑定,但需要手动触发才能视图更新
-        this.$apply()
-      },
-      fail: () => {}
+      dataType: 'json'
     })
+      .then(res => {
+        this.swiperArr = res.data.data
+        this.$apply()
+      })
     // 首页导航
+    // wepy.request({
+    //   url: 'https://itjustfun.cn/api/public/v1/home/catitems',
+    //   success: res => {
+    //     this.navArr = res.data.data
+    //     this.$apply()
+    //   },
+    //   fail: () => {}
+    // })
     wepy.request({
-      url: 'https://itjustfun.cn/api/public/v1/home/catitems',
-      success: res => {
+      url: 'https://itjustfun.cn/api/public/v1/home/catitems'
+    })
+      .then(res => {
         this.navArr = res.data.data
         this.$apply()
-      },
-      fail: () => {}
-    })
+      })
   }
 }
 </script>

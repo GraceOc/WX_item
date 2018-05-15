@@ -18,7 +18,6 @@ import wepy from 'wepy'
 import 'wepy-async-function'
 
 export default class extends wepy.app {
-  // 添加继承
   constructor() {
     super()
     this.use('promisify')
@@ -28,7 +27,10 @@ export default class extends wepy.app {
       'pages/index',
       'pages/category',
       'pages/cart',
-      'pages/me'
+      'pages/me',
+      'pages/goods_detail',
+      'pages/goods_list',
+      'pages/orders'
     ],
     window: {
       backgroundTextStyle: 'light',

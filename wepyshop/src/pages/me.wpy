@@ -2,7 +2,7 @@
 </style>
 <template>
   <view class="container">
-    Hello world
+    我的
   </view>
 </template>
 
@@ -12,7 +12,7 @@
   export default class Me extends wepy.page {
     // 这里写json配置
     config = {
-      navigationBarTitleText: '分类'
+      navigationBarTitleText: '我的'
     }
     onLoad() {
       console.log('onLoad')
