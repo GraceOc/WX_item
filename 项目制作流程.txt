@@ -9,9 +9,9 @@
       (5). 在生成的目录下安装依赖 npm i
    (B)在vscode中配置:
    	(1)配置当前页:打开安装vetur,配置:右下角=>选择语言模式处改为vue
-   	(2)配置全局: 文件-首选项-设置-用户设置-添加代码-"*.wpy": "vue"
+   	(2)配置全局: 文件-首选项-设置-用户设置-添加自己团队的配置-"*.wpy": "vue"
    	(3)在project.config.json文件中修改自己的APPID
-	(4) 以上23步可以直接在该目录下放入.vscode包(里面配置好,推荐,因为配置全面)
+	(4) 以上2步可以直接在该目录下放入.vscode包(里面配置好,推荐,因为配置全面)
 
    (C) 开启实时编译,在使用中不能关闭,指令: wepy build --watch
 
@@ -52,7 +52,7 @@
 
 ====================day04====================
 
-      (1)添加goodslis, order, goodsdetail页面,并在app.wepy中将这些页面添加到pages pages中不能带wepy后缀
+      (1)添加goodslis, order, goodsdetail页面,并在app.wepy中将这些页面添加到pages pages中不能带wpy后缀
 
 	(2.0).文档:  https://github.com/Tencent/wepy/wiki/wepy%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8async-await
       (2)npm install wepy-async-function --save 让小程序的api支持promise,安装完毕后在package.json文件中会出现"wepy-async-function": "^1.4.6"
@@ -63,5 +63,26 @@
       (1) 新建utils工具目录=>封装发送请求的js文件,将根路径独立分离出来作appConfig.js
       (2) 新建API目录,导入util中的文件
 
----确保全部替换成线上数据后,删除src中的upload和dist中的upload能缩小文件大小,实现更好预览
+
+(二).使用手机进行预览
+
+      (1) 确保全部图片替换成线上数据后,删除src中的upload和dist中的upload能缩小文件大小,实现更好预览====控制项目大小
+      (2) 去掉域名校验的√,此时报错:"不在以下 request 合法域名列表中，请参考文档,"  需要添加配置处理;微信公众平台=>设置=>开发设置=>配置服务器域名=>配置服务器信息=>添加报错提示的域名到合法域名中即可
+      (3) 说明: dist文件夹是小程序的根目录,编译后的文件会在这个目录生成. 查看微程序根: project.config.json文件-> "miniprogramRoot": "./dist",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
