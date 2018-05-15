@@ -93,32 +93,29 @@
     </block>
   </view>
   <!-- 首页楼层 -->
-  <view class="floor">
-    <view class="floor-head">
-      <image class="floor-head-img" src="/upload/pic_floor01_title@2x.png"></image>
-    </view>
-    <view class="floor-body">
-      <view class="floor-body-left">
-        <navigator url="">
-          <image class="floor-body-left-img" src="/upload/pic_floor01_1@2x.png"></image>
-        </navigator>
+  <block wx:for="{{floorArr}}" wx:key="index">
+    <view class="floor">
+      <view class="floor-head">
+        <image class="floor-head-img" src="{{item.floor_title.image_src}}"></image>
       </view>
-      <view class="floor-body-right">
-        <navigator url="">
-          <image class="floor-body-right-img" src="/upload/pic_floor01_2@2x.png"></image>
-        </navigator>
-        <navigator url="">
-          <image class="floor-body-right-img" src="/upload/pic_floor01_3@2x.png"></image>
-        </navigator>
-        <navigator url="">
-          <image class="floor-body-right-img" src="/upload/pic_floor01_4@2x.png"></image>
-        </navigator>
-        <navigator url="">
-          <image class="floor-body-right-img" src="/upload/pic_floor01_5@2x.png"></image>
-        </navigator>
+      <view class="floor-body">
+        <!-- 左边 -->
+        <view class="floor-body-left">
+          <navigator url="">
+            <image class="floor-body-left-img" src="/upload/pic_floor01_1@2x.png"></image>
+          </navigator>
+        </view>
+        <!-- 右边 -->
+        <view class="floor-body-right">
+          <block wx:for="{{item.product_list}}" wx:key="index" wx:if="{{index > 0}}">
+            <navigator url="{{item.navigator_url}}" open_type="{{item.open_type}}">
+              <image class="floor-body-right-img" src="{{item.image_src}}" style="width:{{item.image_width}}rpx"></image>
+            </navigator>
+          </block>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
 </template>
 
 <script>
@@ -138,58 +135,26 @@ export default class Index extends wepy.page {
   data = {
     // 轮播图数组
     swiperArr: [],
-    navArr: []
+    navArr: [],
+    floorArr: []
   }
   onLoad() {
     console.log('onLoad')
-    // // 请求数据 wepy.request() 在wepy中使用wepy代替wx写法,小程序没有window对象
-    // wepy.request({
-    //   url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
-    //   method: 'GET',
-    //   dataType: 'json',
-    //   success: res => {
-    //     // 如果设为json会尝试对返回数据做一次JSON.pare
-    //     console.log(res.data.data)
-    //     this.swiperArr = res.data.data
-    //     // 原生小程序默认单向数据绑定,而wepy封装了this.$apply()方法双向数据绑定,但需要手动触发才能视图更新
-    //     this.$apply()
-    //   },
-    //   fail: () => {}
-    // })
-
-    // wepy.request({
-    //   url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
-    //   method: 'GET',
-    //   dataType: 'json'
-    // })
-    //   .then(res => {
-    //     this.swiperArr = res.data.data
-    //     this.$apply()
-    //   })
-    api.getHomeSwiper().then(res => { // 轮播图
+    api.getHomeSwiper().then(res => {
+      // 轮播图
       this.swiperArr = res.data
       this.$apply()
     })
-    api.getNavArr().then(res => { // 导航栏
+    api.getHomeNav().then(res => {
+      // 导航栏
       this.navArr = res.data
       this.$apply()
     })
-    // 首页导航
-    // wepy.request({
-    //   url: 'https://itjustfun.cn/api/public/v1/home/catitems',
-    //   success: res => {
-    //     this.navArr = res.data.data
-    //     this.$apply()
-    //   },
-    //   fail: () => {}
-    // })
-    // wepy.request({
-    //   url: 'https://itjustfun.cn/api/public/v1/home/catitems'
-    // })
-    //   .then(res => {
-    //     this.navArr = res.data
-    //     this.$apply()
-    //   })
+    api.getHomeFloor().then(res => {
+      // 导航栏
+      this.floorArr = res.data
+      this.$apply()
+    })
   }
 }
 </script>
