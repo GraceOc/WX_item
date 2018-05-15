@@ -41,8 +41,21 @@
      (1)export default class Index extends wepy.page:创建Index类,并继承wepy.page页面,然后导出到本页面中
      (2)import wepy from 'wepy':把wepy导入到页面中
 
+
 ====================day03===================
 ---在wepy中用wepy代替wx写法
 ---域名不合法的报错处理: 配置域名:详情=>不校验合法域名除勾上
+
+
+
+
+
+====================day04====================
+
+      (1)添加goodslis, order, goodsdetail页面,并在app.wepy中将这些页面添加到pages pages中不能带wepy后缀
+
+	(2.0).文档:  https://github.com/Tencent/wepy/wiki/wepy%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8async-await
+      (2)npm install wepy-async-function --save 让小程序的api支持promise,安装完毕后在package.json文件中会出现"wepy-async-function": "^1.4.6"
+---在wepy.config文件中配置,完成后需要更改成promise写法
 
 

@@ -13,9 +13,7 @@ module.exports = {
     },*/
     babel: {
       sourceMap: true,
-      presets: [
-        'env'
-      ],
+      presets: ['env'],
       plugins: [
         'babel-plugin-transform-class-properties',
         'transform-export-extensions',
@@ -23,18 +21,16 @@ module.exports = {
       ]
     }
   },
-  plugins: {
-  },
+  plugins: {},
   appConfig: {
     noPromiseAPI: ['createSelectorQuery']
   }
 }
 
 if (prod) {
+  module.exports.cliLogs = false
 
-  module.exports.cliLogs = false;
-
-  delete module.exports.compilers.babel.sourcesMap;
+  delete module.exports.compilers.babel.sourcesMap
   // 压缩sass
   // module.exports.compilers['sass'] = {outputStyle: 'compressed'}
 
@@ -47,8 +43,7 @@ if (prod) {
   module.exports.plugins = {
     uglifyjs: {
       filter: /\.js$/,
-      config: {
-      }
+      config: {}
     },
     imagemin: {
       filter: /\.(jpg|png|jpeg)$/,

@@ -1,24 +1,35 @@
 <style lang="less">
-page{
-  background-color:#f4f4f4;
-  font-size:24rpx;
-  color:#333
+page {
+  background-color: #f4f4f4;
+  font-size: 24rpx;
+  color: #333;
 }
-image{
-  vertical-align:top
+image {
+  vertical-align: top;
 }
-input{
-  border:1px solid red
+input {
+  border: 1px solid red;
 }
-
 </style>
 
 <script>
 import wepy from 'wepy'
+// 导入后小程序的api支持promise
+import 'wepy-async-function'
 
 export default class extends wepy.app {
+  // 添加继承
+  constructor() {
+    super()
+    this.use('promisify')
+  }
   config = {
-    pages: ['pages/index', 'pages/category', 'pages/cart', 'pages/me'],
+    pages: [
+      'pages/index',
+      'pages/category',
+      'pages/cart',
+      'pages/me'
+    ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#ff2d4a',

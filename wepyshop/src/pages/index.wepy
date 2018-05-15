@@ -123,8 +123,9 @@
 
 <script>
 // 这里写逻辑
+// 把wepy导入到页面中
 import wepy from 'wepy'
-
+// 创建一个叫Index的类,这个类从wepy.page中继承过来 Index首字母必须大写
 export default class Index extends wepy.page {
   // 这里写json配置 语法: 属性名 = { } 配置之间无逗号
   config = {
