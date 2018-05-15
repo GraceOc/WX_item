@@ -125,6 +125,9 @@
 // 这里写逻辑
 // 把wepy导入到页面中
 import wepy from 'wepy'
+// 导入API接口函数
+import api from '../api/api'
+
 // 创建一个叫Index的类,这个类从wepy.page中继承过来 Index首字母必须大写
 export default class Index extends wepy.page {
   // 这里写json配置 语法: 属性名 = { } 配置之间无逗号
@@ -153,15 +156,24 @@ export default class Index extends wepy.page {
     //   },
     //   fail: () => {}
     // })
-    wepy.request({
-      url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
-      method: 'GET',
-      dataType: 'json'
+
+    // wepy.request({
+    //   url: 'https://itjustfun.cn/api/public/v1/home/swiperdata',
+    //   method: 'GET',
+    //   dataType: 'json'
+    // })
+    //   .then(res => {
+    //     this.swiperArr = res.data.data
+    //     this.$apply()
+    //   })
+    api.getHomeSwiper().then(res => { // 轮播图
+      this.swiperArr = res.data
+      this.$apply()
     })
-      .then(res => {
-        this.swiperArr = res.data.data
-        this.$apply()
-      })
+    api.getNavArr().then(res => { // 导航栏
+      this.navArr = res.data
+      this.$apply()
+    })
     // 首页导航
     // wepy.request({
     //   url: 'https://itjustfun.cn/api/public/v1/home/catitems',
@@ -171,13 +183,13 @@ export default class Index extends wepy.page {
     //   },
     //   fail: () => {}
     // })
-    wepy.request({
-      url: 'https://itjustfun.cn/api/public/v1/home/catitems'
-    })
-      .then(res => {
-        this.navArr = res.data.data
-        this.$apply()
-      })
+    // wepy.request({
+    //   url: 'https://itjustfun.cn/api/public/v1/home/catitems'
+    // })
+    //   .then(res => {
+    //     this.navArr = res.data
+    //     this.$apply()
+    //   })
   }
 }
 </script>

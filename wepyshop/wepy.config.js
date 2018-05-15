@@ -8,9 +8,9 @@ module.exports = {
     less: {
       compress: true
     },
-    /*sass: {
+    /* sass: {
       outputStyle: 'compressed'
-    },*/
+    }, */
     babel: {
       sourceMap: true,
       presets: ['env'],
