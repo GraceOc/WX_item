@@ -101,8 +101,8 @@
       <view class="floor-body">
         <!-- 左边 -->
         <view class="floor-body-left">
-          <navigator url="">
-            <image class="floor-body-left-img" src="/upload/pic_floor01_1@2x.png"></image>
+          <navigator url="{{item.product_list[0].navigator_url}}">
+            <image class="floor-body-left-img" src="{{item.product_list[0].image_src}}"></image>
           </navigator>
         </view>
         <!-- 右边 -->

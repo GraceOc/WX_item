@@ -63,5 +63,5 @@
       (1) 新建utils工具目录=>封装发送请求的js文件,将根路径独立分离出来作appConfig.js
       (2) 新建API目录,导入util中的文件
 
-
+---确保全部替换成线上数据后,删除src中的upload和dist中的upload能缩小文件大小,实现更好预览
 
