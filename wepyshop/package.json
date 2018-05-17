@@ -11,7 +11,11 @@
   "author": "CCchen <1138815674@qq.com>",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
     "wepy": "^1.7.1",
+=======
+    "wepy": "^1.6.0",
+>>>>>>> 1cf80a3ba642dbee62fd3dcd4d73f424c91b0354
     "wepy-async-function": "^1.4.6"
   },
   "devDependencies": {

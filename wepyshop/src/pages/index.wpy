@@ -136,10 +136,13 @@
       </view>
     </view>
   </block>
+<<<<<<< HEAD
   <view class="to-top" @tap="toTopHandle">
     <image class="to-top-img" src="/images/arrow_top@2x.png"></image>
     <view class="to-top-txt">顶部</view>
   </view>
+=======
+>>>>>>> 1cf80a3ba642dbee62fd3dcd4d73f424c91b0354
 </template>
 
 <script>
@@ -162,6 +165,7 @@ export default class Index extends wepy.page {
     navArr: [],
     floorArr: []
   }
+<<<<<<< HEAD
   methods = {
     toTopHandle(){
       wepy.pageScrollTo({
@@ -170,6 +174,8 @@ export default class Index extends wepy.page {
       })
     }
   }
+=======
+>>>>>>> 1cf80a3ba642dbee62fd3dcd4d73f424c91b0354
   onLoad() {
     console.log('onLoad')
     api.getHomeSwiper().then(res => {
